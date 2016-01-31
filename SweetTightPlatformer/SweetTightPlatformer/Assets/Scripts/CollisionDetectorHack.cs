@@ -25,9 +25,20 @@ public class CollisionDetectorHack : MonoBehaviour
         instance = this;
         allTheBoxColliders = FindObjectsOfType<BoxCollider2D>() as BoxCollider2D[];
     }
+    bool removeSpawned = false;
 
-	void Update ()
+    void Update ()
     {
+
+        if (removeSpawned)
+        {
+            foreach (BoxCollider2D box3 in spawnedBoxColliders)
+            {
+                GameObject.Destroy(box3.gameObject);
+            }
+            spawnedBoxColliders.Clear();
+            removeSpawned = false;
+        }
         foreach (BoxCollider2D box1 in BoxCollidersWithCallBacks)
         {
             foreach (BoxCollider2D box2 in allTheBoxColliders)
@@ -46,6 +57,11 @@ public class CollisionDetectorHack : MonoBehaviour
             }
         }	
 	}
+
+    public void DeleteAllSpawnedObjects()
+    {
+        removeSpawned = true;
+    }
 
     public void CheckCollision(BoxCollider2D box1, BoxCollider2D box2)
     {

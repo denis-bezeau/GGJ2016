@@ -48,8 +48,16 @@ public class CharacterControllerScript : MonoBehaviour {
         }
         else { m_bRunning = false; }
 
+        if (Input.GetKey(KeyCode.S) || Input.GetAxis("Vertical") < -X_THRESHOLD)
+        {
+            animator.SetBool("crouching", true);
+        }
+        else
+        {
+            animator.SetBool("crouching", false);
+        }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Button0")) && m_bJumping == false)
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Button0")) && m_bJumping == false)
         {
             m_bJumping = true;
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, m_fJumpSpeed));

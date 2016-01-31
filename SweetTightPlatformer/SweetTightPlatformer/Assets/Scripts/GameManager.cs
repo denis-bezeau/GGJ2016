@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
 
     static GameManager instance;
 
+    
+
     public static GameManager GetInstance()
     {
         return instance;
@@ -39,6 +41,8 @@ public class GameManager : MonoBehaviour {
     {
         player.transform.position = respawn.transform.position;
         player.GetComponent<CharacterControllerScript>().m_bJumping = false;
+        CollisionDetectorHack.GetInstance().DeleteAllSpawnedObjects();
+
         
         foreach(DynamicBlock currentBlock in dyanamicBlocks)
         {
