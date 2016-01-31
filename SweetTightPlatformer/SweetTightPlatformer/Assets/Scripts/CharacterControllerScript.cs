@@ -57,6 +57,7 @@ public class CharacterControllerScript : MonoBehaviour {
 
         animator.SetFloat("MomentumX", rigidBody.velocity.x);
         animator.SetFloat("MomentumY", rigidBody.velocity.y);
+        animator.SetBool("Jumping", m_bJumping);
 
         if (Input.GetButton("Button0")) { Debug.Log("STP->button0"); }
         if (Input.GetButton("Button1")) { Debug.Log("STP->button1"); }
@@ -89,8 +90,9 @@ public class CharacterControllerScript : MonoBehaviour {
 
     public void FinishCollision()
     {
-        //tell the game manager to go up a level 
-        //respawn
+        GameManager.GetInstance().LevelUp();
+        GameManager.GetInstance().Respawn();
+        
 
         Debug.Log("FinishCollision()");
     }
