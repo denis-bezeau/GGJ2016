@@ -16,6 +16,7 @@ public class DOCTORBEAR : MonoBehaviour {
 
         for (int i = 0; i < SpeechBubbles.Length; ++i)
         {
+            if(SpeechBubbles[i] != null)
             SpeechBubbles[i].SetActive(false);
         }
     }
@@ -31,6 +32,7 @@ public class DOCTORBEAR : MonoBehaviour {
             {
                 displayingSpeechBubble = false;
                 if(speechBubbletoDisplay < SpeechBubbles.Length)
+                    if(SpeechBubbles[speechBubbletoDisplay] != null)
                 SpeechBubbles[speechBubbletoDisplay].SetActive(false);
             }
         }
@@ -47,6 +49,7 @@ public class DOCTORBEAR : MonoBehaviour {
             Debug.Log("collision with doc bear. speechBubbletoDisplay=" + speechBubbletoDisplay);
             for (int i = 0; i < SpeechBubbles.Length; ++i)
             {
+                if (SpeechBubbles[i] != null)
                 SpeechBubbles[i].SetActive(i == speechBubbletoDisplay);
             }
         }
